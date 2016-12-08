@@ -1,4 +1,6 @@
-#write your code here
+#!/usr/bin/env ruby
+# -*- mode: ruby -*
+# vi: set ft=ruby :
 
 def hello
   "Hello!"

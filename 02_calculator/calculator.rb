@@ -1,4 +1,6 @@
-#write your code here
+#!/usr/bin/env ruby
+# -*- mode: ruby -*
+# vi: set ft=ruby :
 
 def add a,b
   a+b
@@ -26,4 +28,3 @@ def factorial f
   return 1 if f == 0
   (1..f).inject(:*)
 end
-
