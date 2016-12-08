@@ -77,23 +77,53 @@ end
 # once the above tests pass,
 # write tests and code for the following:
 
-describe "#multiply" do
+describe "multiply" do
 
-  it "multiplies two numbers"
+  it "multiplies 2 by 3" do
+    expect(multiply(2,3)).to eq(6)
+  end
 
-  it "multiplies several numbers"
+  it "multiplies -2 by -3" do
+    expect(multiply(-2,-3)).to eq(6)
+  end
+
+  it "multiplies an empty array" do
+    expect(multiply([])).to eq(0)
+  end
+
+
+  it "multiplies more than 2 numbers (2,3,4,5)" do
+    expect(multiply([2,3,4,5])).to eq(120)
+  end
   
 end
 
-describe "#power" do
-  it "raises one number to the power of another number"
+describe "power" do
+  it "raises one number to the power of another number" do
+    expect(power(3,3)).to eq(27)
+  end
 end
 
 # http://en.wikipedia.org/wiki/Factorial
 describe "#factorial" do
-  it "computes the factorial of 0"
-  it "computes the factorial of 1"
-  it "computes the factorial of 2"
-  it "computes the factorial of 5"
-  it "computes the factorial of 10"
+  it "computes the factorial of 0" do
+    expect(factorial(0)).to eq(1)
+  end
+
+  it "computes the factorial of 1" do
+    expect(factorial(1)).to eq(1)
+  end
+
+  it "computes the factorial of 2" do
+    expect(factorial(2)).to eq(2)
+  end
+
+  it "computes the factorial of 5" do
+    expect(factorial(5)).to eq(120)
+  end
+
+  it "computes the factorial of 10" do
+    expect(factorial(10)).to eq(3628800)
+  end
+
 end
