@@ -13,14 +13,12 @@ def translate input
   words.map! do |pig|
     if /^[#{VOWELS}]/ === pig
       pig += 'ay'
-    elsif /^qu/ === pig
-      pig = pig.gsub(/^qu/,'')+'quay'
-    elsif /.qu/ === pig
-      chunk = pig.split(/(.qu)/)
+    elsif /.*qu/ === pig
+      chunk = pig.split(/(.*qu)/)
       pig = chunk[2]+chunk[1]+'ay'
     else
       chunk = pig.split(/(^[#{CONSONANTS}]*)/)
-      pig = chunk[2]+chunk[1]+'ay'
+      pig = chunk[2]+chunk[1]+'ay' # Needs DRYing?
     end
   end
   words.join(' ')
