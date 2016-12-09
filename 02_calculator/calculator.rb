@@ -11,13 +11,11 @@ def subtract a,b
 end
 
 def sum(*args)
-  return 0 if args.flatten.length == 0
-  args.flatten.inject(:+)
+  args.flatten.inject(:+) || 0
 end
 
 def multiply(*args)
-  return 0 if args.flatten.length == 0
-  args.flatten.inject(:*)
+  args.flatten.inject(:*) || 0
 end
 
 def power a,b
