@@ -23,6 +23,5 @@ def power a,b
 end
 
 def factorial f
-  return 1 if f == 0
-  (1..f).inject(:*)
+  (1..f).inject(:*) || 1
 end
