@@ -9,5 +9,5 @@ def ftoc f
 end
 
 def ctof c
-  32.0+(c*1.0/F2C)
+  32.0+(c/F2C)
 end
