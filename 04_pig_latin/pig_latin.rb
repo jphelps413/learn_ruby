@@ -5,20 +5,25 @@
 VOWELS     = %w[a e i o u]
 CONSONANTS = ('a'..'z').to_a - VOWELS
 
-# Not crazy about this, but it works. Still not sure why the splits end up
-# with an empty string as element 0 in the chunk arrays.
-#
+def pig_out word,regexp
+  # Still uncertain why this => 'splitme'.split(/(.*it)/)
+  # is returning this        => ["", "split", "me"]
+  # but the reject eliminates the null string element.
+  word.split(/#{regexp}/).reject(&:empty?).reverse.join+'ay'
+end
+
 def translate input
   words = input.split(' ')
   words.map! do |pig|
     if /^[#{VOWELS}]/ === pig
       pig += 'ay'
     elsif /.*qu/ === pig
-      chunk = pig.split(/(.*qu)/)
-      pig = chunk[2]+chunk[1]+'ay'
+      pig = pig_out pig, '(.*qu)'
     else
-      chunk = pig.split(/(^[#{CONSONANTS}]*)/)
-      pig = chunk[2]+chunk[1]+'ay' # Needs DRYing?
+      # Fun fact, using single quotes will prevent the CONSONANTS from
+      # properly expanding into the regexp, therefore the double quotes
+      # are a necessity in this case..
+      pig = pig_out pig, "(^[#{CONSONANTS}]*)"
     end
   end
   words.join(' ')
